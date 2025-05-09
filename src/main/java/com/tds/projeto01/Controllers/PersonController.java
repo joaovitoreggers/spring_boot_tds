@@ -1,19 +1,29 @@
 package com.tds.projeto01.Controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.tds.projeto01.Models.PersonModel;
+import com.tds.projeto01.Services.PersonService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/person")
 public class PersonController {
 
-    @GetMapping
-    String newPerson() {
-        return "<html>" +
-                "<h2>Olá</h2>" +
-                "<p>Meu nome é João</p>" +
-                "<span>Tenho 22 Anos</span>" +
-                "</html>";
+    PersonService personService = new PersonService();
+
+    @GetMapping("/list")
+    List <PersonModel> getAll() {
+        return personService.getPeople();
+    }
+
+    @PostMapping("/newPerson")
+    PersonModel newPeople(@RequestBody PersonModel person) {
+        return personService.addPerson(person);
+    }
+
+    @PatchMapping("/updatePerson")
+    PersonModel updatePerson(@RequestBody PersonModel person, @RequestParam int id) {
+        return personService.updatePerson(person, id);
     }
 }
