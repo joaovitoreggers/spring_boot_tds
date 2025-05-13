@@ -1,5 +1,4 @@
 package com.tds.projeto01.Models;
-
 import lombok.Getter;
 import lombok.Setter;
 

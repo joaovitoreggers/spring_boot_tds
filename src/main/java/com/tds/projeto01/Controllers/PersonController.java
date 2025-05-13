@@ -1,9 +1,7 @@
 package com.tds.projeto01.Controllers;
-
 import com.tds.projeto01.Models.PersonModel;
 import com.tds.projeto01.Services.PersonService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
